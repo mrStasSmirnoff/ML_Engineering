@@ -12,12 +12,11 @@ def hello():
     return jsonify("hello from ML API")
 
 
-@app.route("/prediction", methods=["GET"])
+@app.route("/predictions", methods=["GET"])
 def predictions():
     data = request.get_json()
     df = pd.DataFrame(data['data'])
     data_all_x_cols = cols
-
     try:
         preprocessed_df = preprocess(df)
     except:
@@ -31,12 +30,9 @@ def predictions():
     except:
         return jsonify("Error occured while processing your data into our model!")
     print("done")
-    response = {'data': [], 'prediction_label': {'survived': 1, 'not survived': 0}}
-    response['data'] = list(predictions)
-    return make_response(jsonify(response), 200)
 
+    response = {'data': list(predictions), 'prediction_label': {'survived': 1, 'not survived': 0}}
+    return make_response(jsonify(response), 200)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
