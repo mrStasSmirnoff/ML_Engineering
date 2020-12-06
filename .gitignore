@@ -1,3 +1,5 @@
 .idea
 mlapi/
 .vscode
+ML-API/.ipynb_checkpoints/testapi-checkpoint.ipynb
+.DS_Store

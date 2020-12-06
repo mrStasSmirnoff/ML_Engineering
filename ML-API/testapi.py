@@ -11,6 +11,7 @@ headers = {'content-type': "application/json",
            'cache-control': "no-cache",
            }
 
-r = request.get(url='http://127.0.0.1:5000/predictions', headers=headers, data=json.dumps(data_json))
+
+r = request.get(url='https://mlapi-titanic.herokuapp.com/predictions', headers=headers, data=json.dumps(data_json))
 data = r.json()
 print(data)
